@@ -38,13 +38,18 @@
 
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction}
+	
+		During this project, we had to specify and develop a distributed application using a Service-Oriented Architecture (SOA).
+		The main function of this application is to provide a structure for planning and booking a turn-key week-end in among a set of destinations.
+		
+		Thus, the principal objectives were here to design and implement services which could permit to build such an architecture on one hand, and to offer a graphical user interface in order to set out the week-end.
 
 	\section{First approach}
 	
 		\subsection{Main process}
 		
 		
-			The process for using the ALMA TWE service is the following: first, a user look up for events matching criteria (figure \ref{fig:lookup}), then book the week-end for the choosen event (figure \ref{fig:mainprocrequest}): travel, hostel, restaurant.
+			The process for using the ALMA TWE service is the following: first, a user looks up for available events matching criteria, such as place or date (figure \ref{fig:lookup}), then book the week-end for the choosen event (figure \ref{fig:mainprocrequest}): travel, hostel, restaurant.
 			
 			%% Ici figures lookup et mainprocrequest
 			\begin{figure}[htp]
@@ -78,7 +83,7 @@
 	
 	\section{Services}
 	
-		There are 4 services in the ALMA TWE: Hostel, Restaurant, Event and Travel. All theses services are composed by a 5th one : CASATWE. This one furnishes a wsdl, that will be used by the user interface.
+		There are 4 services in the ALMA TWE: Hostel, Restaurant, Event and Travel. All theses services are components of a 5th one : CasaTWE. This one provides a wsdl, that will be used by the user interface.
 	
 	
 	\section{Databases}
@@ -96,13 +101,41 @@
 	
 	
 	
-	
-	
 	\section{User interfaces}
+	
+		As the implementation presented in this report is still in progress, currently the user interfaces aren't over yet.
+		
+		Beyond these lack of time issues, we had here to provide a web application that offers to ALMA-TWE clients a graphical user interface to plan and build their turn-key week-ends.
+		Moreover, we had to develop a administration interface which permits a total control on databases.
+		
+		\subsection{Client interface}
+		
+		As we see in figure \ref{fig:clientiface}, the client interface requires client's data (name, firstname and living town, I presume), the date and destination the client want to travel.
+		
+		Thus it will then provide him events corresponding to his request. Once he chooses an event, then will be registerred booking to the choosen event, an hotel room, a diner in a restaurant, and the two travels needed to join the destination and then to go home.
+		
+		Sadly, at this time, some dark technical problems makes this interface cannot communicate with our composite application, despite it recognizes it, and can retrieve and build communication's objects (\emph{ClientRequest} and \emph{ClientBooking}) using the WSDL file using to bind the application with its clients.
+		
+		\begin{figure}[htp]
+			\centering
+			\includegraphics[width=\textwidth/2]{clientiface.png}
+			\caption{Tables for each services}
+			\label{fig:clientiface}
+		\end{figure}
+		
+		\subsection{Travel map and administration interface}
+		
+		Moreover, we have still to provide to the client a map that depicts the travel using the OpenStreetMap service.
+		
+		On the other side, once we get the problems with Client Interface solved, we will develop a similar web application based interface to provides an administrator status who would get full rights on database tables.
 	
 	\section*{Conclusion}
 	\addcontentsline{toc}{section}{Conclusion}
 
-
+		This project have given to us the opportunity to discover many problematics bound to SOA development, confronting us to choices about services' hierarchy, communications objects, etc.
+		
+		Beyond that, we spent a very lot of time on using the Open ESB API, which bugs and regular issues forced us many times to reinstall Netbeans, our databases, or even to ``reimplement'' a large part of our ``code'' (if some hundreds of clicks can be considered as an real coding implementation).
+		
+		Moreover, the development of client and administration interfaces also need a lot of time during the project development, despite their limited interest according to the SOA concepts, and thus to the Services' module.
 
 \end{document}
